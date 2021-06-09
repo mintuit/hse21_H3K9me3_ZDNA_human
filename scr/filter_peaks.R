@@ -1,7 +1,11 @@
+library(ggplot2)
+library(dplyr)
+library(tidyr)   
+library(tibble)
 
 #NAME <- 'H3K9me3_SK-N-SH.ENCFF231PXT.hg19'
-NAME <- 'H3K9me3_SK-N-SH.ENCFF231PXT.hg38'
-#NAME <- 'H3K9me3_SK-N-SH.ENCFF051ZKJ.hg19'
+#NAME <- 'H3K9me3_SK-N-SH.ENCFF231PXT.hg38'
+NAME <- 'H3K9me3_SK-N-SH.ENCFF051ZKJ.hg19'
 #NAME <- 'H3K9me3_SK-N-SH.ENCFF051ZKJ.hg38'
 OUT_DIR <- 'Results/'
 
@@ -21,7 +25,7 @@ ggplot(bed_df) +
   geom_histogram() +
   ggtitle(NAME, subtitle = sprintf('Number of peaks = %s', nrow(bed_df))) +
   theme_bw()
-ggsave(paste0('len_hist.', NAME, '.filtered.pdf'), path = OUT_DIR)
+ggsave(paste0('len_hist.', NAME, '.filtered.png'), path = OUT_DIR)
 
 bed_df %>%
   select(-len) %>%
